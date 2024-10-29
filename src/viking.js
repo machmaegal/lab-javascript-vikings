@@ -25,7 +25,7 @@ class Viking extends Soldier {
 
     receiveDamage(dmg) {
         this.health = this.health - dmg;
-        if (this.health === 0) return `${this.name} has died in act of combat`;
+        if (this.health <= 0) return `${this.name} has died in act of combat`;
 
         return `${this.name} has received ${dmg} points of damage`;
     }
@@ -64,8 +64,8 @@ class War {
     }
 
     vikingAttack() {
-        const randomSaxon = this.saxonArmy[Math.floor(Math.random(this.saxonArmy.length))];
-        const randomViking = this.vikingArmy[Math.floor(Math.random(this.vikingArmy.length))];
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         const cry = randomSaxon.receiveDamage(randomViking.strength);
 
         if (randomSaxon.health <= 0) {
